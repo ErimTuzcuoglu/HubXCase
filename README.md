@@ -38,6 +38,14 @@ For running the application in production mode using Docker:
 
     yarn docker:production
 
+
+### Docs 
+#### Development
+    http://localhost:3000/docs/
+
+#### Production
+    http://localhost:5000/docs/
+
 ## Testing
 
 To run tests:
