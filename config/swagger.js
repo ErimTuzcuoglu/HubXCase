@@ -13,9 +13,9 @@ export default {
         },
         servers: [
             {
-                url: "http://localhost:3000/",
-                description: "Local server"
-            },
+                url: `http://localhost:${process.env.PORT}/`,
+                description: `${process.env.NODE_ENV} Server`
+            }
         ]
     },
     // looks for configuration in specified directory
