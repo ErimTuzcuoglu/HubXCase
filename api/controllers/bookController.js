@@ -10,7 +10,6 @@ export default function bookController(
 ) {
     const dbRepository = bookRepository(bookModelRepository());
 
-    // Fetch all the books of the logged in user
     const fetchAllBooks = async (req, res, next) => {
         try {
             const books = await getAll(dbRepository)
@@ -35,6 +34,7 @@ export default function bookController(
 
         try {
             const createdBook = await createBook({ title, authorId, price, ISBN, language, numberOfPages, publisher, bookRepository: dbRepository });
+            res.status(201);
             return res.apiResponse(createdBook);
         } catch (error) {
             return next(error);

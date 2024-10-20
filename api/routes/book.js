@@ -7,13 +7,11 @@ import bookModelRepository from '../../loaders/database/mongoDB/repositories/boo
 export default function bookRouter() {
   const router = express.Router();
 
-  // load controller with dependencies
   const controller = bookController(
     bookRepository,
     bookModelRepository,
   );
 
-  // GET endpoints
   router
     .route('/')
     .get(
@@ -24,14 +22,8 @@ export default function bookRouter() {
     .get(
       controller.fetchBookById
     );
-
-  // BOOK endpoints
   router.route('/').post(controller.addNewBook);
-
-  // PUT endpoints
   router.route('/:id').put(controller.updateBookById);
-
-  // DELETE endpoints
   router.route('/:id').delete(controller.deleteBookById);
 
   return router;

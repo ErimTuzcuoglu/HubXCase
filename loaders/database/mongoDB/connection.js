@@ -1,4 +1,4 @@
-import seeder from "./seeder.js";
+import seeder from './seeder';
 
 export default function connection(mongoose, config, options) {
   function connectToMongo() {

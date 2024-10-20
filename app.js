@@ -13,11 +13,11 @@ const app = express();
 expressConfig(app, config);
 
 // DB configuration and connection create
-mongoDbConnection(mongoose, config, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    connectTimeoutMS: 1000
-}).connectToMongo();
+if (process.env.NODE_ENV !== "test") {
+    mongoDbConnection(mongoose, config, {
+        connectTimeoutMS: 1000
+    }).connectToMongo();
+}
 
 // routes for each endpoint
 routes(app, express);
@@ -25,8 +25,9 @@ routes(app, express);
 // error handling middleware
 app.use(errorHandlingMiddleware);
 
-app.listen(config.port, () => {
-    console.log(`Server is listening on port ${config.port}`);
-});
-// Expose app
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(config.port, () => {
+        console.log(`Server is listening on port ${config.port}`);
+    });
+}
 export default app;

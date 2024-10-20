@@ -34,6 +34,7 @@ export default function authorController(
 
         try {
             const createdAuthor = await createAuthor({ name, country, birthDate, authorRepository: dbRepository });
+            res.status(201);
             return res.apiResponse(createdAuthor);
         } catch (error) {
             return next(error);
