@@ -10,19 +10,19 @@ export default function bookModelRepository() {
 
     const create = async ({
         title,
-        author,
+        authorId,
         price,
         ISBN,
         language,
         numberOfPages,
         publisher
     }) => {
-        if (!mongoose.Types.ObjectId.isValid(author) || !(await Author.findById(author))) throw new Error('Author does not exist!');
+        if (!mongoose.Types.ObjectId.isValid(authorId) || !(await Author.findById(authorId))) throw new Error('Author does not exist!');
         if (await Book.findOne({ ISBN })) throw new Error('ISBN is already exists!');
 
         const newBook = new Book({
             title,
-            author,
+            author: authorId,
             price,
             ISBN,
             language,
@@ -33,9 +33,10 @@ export default function bookModelRepository() {
         return newBook.save();
     };
 
-    const updateById = async (id, { title, author, price, ISBN, language, numberOfPages, publisher }) => {
-        if (!mongoose.Types.ObjectId.isValid(author) || !(await Author.findById(author))) throw new Error('Author does not exist!');
-        if (await Book.findOne({ ISBN })) throw new Error('ISBN is already exists!');
+    const updateById = async (id, { title, authorId, price, ISBN, language, numberOfPages, publisher }) => {
+        if (!mongoose.Types.ObjectId.isValid(authorId) || !(await Author.findById(authorId))) throw new Error('Author does not exist!');
+        const bookWithSameISBN = await Book.findOne({ ISBN });
+        if (bookWithSameISBN && bookWithSameISBN.id !== id) throw new Error('ISBN is already exists!');
 
         //TODO: Object will be mapped to DTOs
         return Book.findOneAndUpdate(
@@ -43,7 +44,7 @@ export default function bookModelRepository() {
             {
                 $set: {
                     title,
-                    author,
+                    author: authorId,
                     price,
                     ISBN,
                     language,

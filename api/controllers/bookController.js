@@ -31,10 +31,10 @@ export default function bookController(
     };
 
     const addNewBook = async (req, res, next) => {
-        const { title, author, price, ISBN, language, numberOfPages, publisher } = req.body;
+        const { title, authorId, price, ISBN, language, numberOfPages, publisher } = req.body;
 
         try {
-            const createdBook = await createBook({ title, author, price, ISBN, language, numberOfPages, publisher, bookRepository: dbRepository });
+            const createdBook = await createBook({ title, authorId, price, ISBN, language, numberOfPages, publisher, bookRepository: dbRepository });
             return res.apiResponse(createdBook);
         } catch (error) {
             return next(error);
@@ -44,7 +44,7 @@ export default function bookController(
     const deleteBookById = async (req, res, next) => {
         try {
             await deleteById(req.params.id, dbRepository);
-            res.apiResponse('Book Deleted Succesfully');
+            return res.apiResponse('Book Deleted Succesfully');
         } catch (error) {
             return next(error);
         }
@@ -52,13 +52,13 @@ export default function bookController(
     };
 
     const updateBookById = async (req, res, next) => {
-        const { title, author, price, ISBN, language, numberOfPages, publisher } = req.body;
+        const { title, authorId, price, ISBN, language, numberOfPages, publisher } = req.body;
 
         try {
             const updatedBook = await updateById({
                 id: req.params.id,
                 title,
-                author,
+                authorId,
                 price,
                 ISBN,
                 language,

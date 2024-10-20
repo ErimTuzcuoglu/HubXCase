@@ -44,7 +44,7 @@ export default function authorController(
     const deleteAuthorById = async (req, res, next) => {
         try {
             await deleteById(req.params.id, dbRepository);
-            res.apiResponse('Author Deleted Succesfully');
+            return res.apiResponse('Author Deleted Succesfully');
         } catch (error) {
             return next(error);
         }

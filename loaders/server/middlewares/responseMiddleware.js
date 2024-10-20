@@ -1,6 +1,6 @@
 export const responseMiddleware = (req, res, next) => {
     res.apiResponse = function (body) {
-        if (typeof body === 'object' && body !== null) {
+        if (body !== null) {
             const success = res.statusCode < 400;
             const formattedResponse = {
                 success,

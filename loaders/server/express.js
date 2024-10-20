@@ -1,7 +1,9 @@
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
-import { responseMiddleware } from './middlewares/responseMiddleware.js';
+import { responseMiddleware } from './middlewares/responseMiddleware';
+import swaggerDocs from './swagger/swagger';
+
 
 export default function expressConfig(app, config) {
   // security middleware
@@ -34,7 +36,7 @@ export default function expressConfig(app, config) {
   });
   app.use(morgan('combined'));
   app.use(responseMiddleware);
-
+  swaggerDocs(app);
   // graceful shutdown
   process.on('SIGTERM', () => {
     console.log('SIGTERM signal received.');

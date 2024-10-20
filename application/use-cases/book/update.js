@@ -2,7 +2,7 @@ export default function updateById(bookDTO) {
     const {
         id,
         title,
-        author,
+        authorId,
         price,
         ISBN,
         language,
@@ -11,11 +11,11 @@ export default function updateById(bookDTO) {
         bookRepository
     } = bookDTO;
 
-    if (!id || !title || !author || !price || !ISBN || !language || !numberOfPages || !publisher || !bookRepository) {
+    if (!id || !title || !authorId || !price || !ISBN || !language || !numberOfPages || !publisher || !bookRepository) {
         throw new Error(`Some fields are empty or not found!`);
     }
 
-    const updatedBook = { title, author, price, ISBN, language, numberOfPages, publisher };
+    const updatedBook = { title, authorId, price, ISBN, language, numberOfPages, publisher };
 
     return bookRepository.findById(id).then((foundBook) => {
         if (!foundBook) {

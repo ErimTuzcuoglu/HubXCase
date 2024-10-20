@@ -1,7 +1,7 @@
 export default function create(bookDTO) {
     const {
         title,
-        author,
+        authorId,
         price,
         ISBN,
         language,
@@ -9,11 +9,11 @@ export default function create(bookDTO) {
         publisher,
         bookRepository
     } = bookDTO;
-    if (!title || !author || !price || !ISBN || !language || !numberOfPages || !publisher || !bookRepository) {
+    if (!title || !authorId || !price || !ISBN || !language || !numberOfPages || !publisher || !bookRepository) {
         throw new Error(`Some fields are empty or not found!`);
     }
 
-    const newBook = { title, author, price, ISBN, language, numberOfPages, publisher };
+    const newBook = { title, authorId, price, ISBN, language, numberOfPages, publisher };
 
     return bookRepository.create(newBook);
 }
