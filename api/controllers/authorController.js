@@ -10,7 +10,6 @@ export default function authorController(
 ) {
     const dbRepository = authorRepository(authorModelRepository());
 
-    // Fetch all the authors of the logged in user
     const fetchAllAuthors = async (req, res, next) => {
         try {
             const authors = await getAll(dbRepository)

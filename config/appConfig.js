@@ -1,7 +1,6 @@
 import { config as dotenvConfig } from 'dotenv';
 dotenvConfig();
 
-
 export default {
   port: parseInt(process.env.PORT) || 3000,
   mongo: {

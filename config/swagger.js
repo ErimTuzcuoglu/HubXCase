@@ -18,6 +18,6 @@ export default {
             },
         ]
     },
-    // looks for configuration in specified directories
+    // looks for configuration in specified directory
     apis: [(require('path')).join(__dirname, '../api/docs', '*.js')],
 }

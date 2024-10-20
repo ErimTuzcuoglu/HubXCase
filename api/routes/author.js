@@ -7,13 +7,11 @@ import authorDbRepositoryMongoDB from '../../loaders/database/mongoDB/repositori
 export default function authorRouter() {
   const router = express.Router();
 
-  // load controller with dependencies
   const controller = authorController(
     authorDbRepository,
     authorDbRepositoryMongoDB,
   );
 
-  // GET endpoints
   router
     .route('/')
     .get(
@@ -24,14 +22,8 @@ export default function authorRouter() {
     .get(
       controller.fetchAuthorById
     );
-
-  // AUTHOR endpoints
   router.route('/').post(controller.addNewAuthor);
-
-  // PUT endpoints
   router.route('/:id').put(controller.updateAuthorById);
-
-  // DELETE endpoints
   router.route('/:id').delete(controller.deleteAuthorById);
 
   return router;
