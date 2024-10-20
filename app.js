@@ -1,11 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import config from './config/appConfig.js';
-import expressConfig from './loaders/server/express.js';
-import routes from './api/routes/index.js';
-import mongoDbConnection from './loaders/database/mongoDB/connection.js';
+import config from './config/appConfig';
+import expressConfig from './loaders/server/express';
+import routes from './api/routes/index';
+import mongoDbConnection from './loaders/database/mongoDB/connection';
 // middlewares
-import { errorHandlingMiddleware } from './loaders/server/middlewares/errorHandlingMiddleware.js';
+import { errorHandlingMiddleware } from './loaders/server/middlewares/errorHandlingMiddleware';
 
 const app = express();
 

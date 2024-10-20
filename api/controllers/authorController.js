@@ -1,8 +1,8 @@
-import createAuthor from '../../application/use-cases/author/create.js';
-import findById from '../../application/use-cases/author/get.js';
-import getAll from '../../application/use-cases/author/getAll.js';
-import deleteById from '../../application/use-cases/author/delete.js';
-import updateById from '../../application/use-cases/author/update.js';
+import createAuthor from '../../application/use-cases/author/create';
+import findById from '../../application/use-cases/author/get';
+import getAll from '../../application/use-cases/author/getAll';
+import deleteById from '../../application/use-cases/author/delete';
+import updateById from '../../application/use-cases/author/update';
 
 export default function authorController(
     authorRepository,

@@ -1,8 +1,8 @@
 import express from 'express';
 
-import authorController from '../controllers/authorController.js';
-import authorDbRepository from '../../application/repositories/authorRepository.js';
-import authorDbRepositoryMongoDB from '../../loaders/database/mongoDB/repositories/authorModelRepository.js';
+import authorController from '../controllers/authorController';
+import authorDbRepository from '../../application/repositories/authorRepository';
+import authorDbRepositoryMongoDB from '../../loaders/database/mongoDB/repositories/authorModelRepository';
 
 export default function authorRouter() {
   const router = express.Router();

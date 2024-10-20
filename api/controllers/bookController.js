@@ -1,8 +1,8 @@
-import createBook from '../../application/use-cases/book/create.js';
-import findById from '../../application/use-cases/book/get.js';
-import getAll from '../../application/use-cases/book/getAll.js';
-import deleteById from '../../application/use-cases/book/delete.js';
-import updateById from '../../application/use-cases/book/update.js';
+import createBook from '../../application/use-cases/book/create';
+import findById from '../../application/use-cases/book/get';
+import getAll from '../../application/use-cases/book/getAll';
+import deleteById from '../../application/use-cases/book/delete';
+import updateById from '../../application/use-cases/book/update';
 
 export default function bookController(
     bookRepository,

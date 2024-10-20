@@ -1,8 +1,8 @@
 import express from 'express';
 
-import bookController from '../controllers/bookController.js';
-import bookRepository from '../../application/repositories/bookRepository.js';
-import bookModelRepository from '../../loaders/database/mongoDB/repositories/bookModelRepository.js';
+import bookController from '../controllers/bookController';
+import bookRepository from '../../application/repositories/bookRepository';
+import bookModelRepository from '../../loaders/database/mongoDB/repositories/bookModelRepository';
 
 export default function bookRouter() {
   const router = express.Router();

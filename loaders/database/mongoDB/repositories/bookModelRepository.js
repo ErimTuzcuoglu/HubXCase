@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { Author } from '../models/author.js';
-import { Book } from '../models/book.js';
+import { Author } from '../models/author';
+import { Book } from '../models/book';
 
 export default function bookModelRepository() {
     //TODO: Object will be mapped to DTOs
